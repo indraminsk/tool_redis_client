@@ -7,6 +7,12 @@ import (
 
 type Client struct {
 	Instance *redis.Client
+	Host     string
+	User     string
+	Pass     string
+	Port     int
+	DB       int
+	Protocol int
 }
 
 func New(host, user, pass string, port, db, protocol int) *Client {
@@ -18,5 +24,13 @@ func New(host, user, pass string, port, db, protocol int) *Client {
 		Protocol: protocol,
 	})
 
-	return &Client{Instance: instance}
+	return &Client{
+		Instance: instance,
+		Host:     host,
+		User:     user,
+		Pass:     pass,
+		Port:     port,
+		DB:       db,
+		Protocol: protocol,
+	}
 }
